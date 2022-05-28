@@ -1,0 +1,75 @@
+@import url('https://rsms.me/inter/inter.css');
+
+.sidebar {
+  width: 236px;
+  height: auto;
+  box-shadow: 15px 0 10px #f5f5f5;
+  font-family: Inter;
+
+  .head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100px;
+    height: 24px;
+    padding-left: 36px;
+    padding-top: 31px;
+    cursor: pointer;
+
+
+    &:hover [alt="logo"] {
+      cursor: pointer;
+      transition: .5s;
+      transform: rotate(360deg);
+    }
+  }
+
+  .subscription {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    width: 189px;
+    height: 172px;
+    background: #f5f5f6;
+    border: 2px solid #D6D6D8;
+    border-radius: 10px;
+  }
+
+  .call {
+    font-weight: 500;
+    font-size: 14px;
+    text-align: center;
+    line-height: 21px;
+    color: #110F15;
+  }
+
+  .description {
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 16.5px;
+    text-align: center;
+  }
+
+  .btnCall {
+    margin-top: 12px;
+    width: 161px;
+    height: 41px;
+    background: rgba(123, 44, 191, 0.1);
+    border-radius: 10px;
+    border: none;
+    color: #7B2CBF;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
+    text-transform: uppercase;
+
+    &:hover {
+      cursor: pointer;
+      border: 2px solid #D6D6D8;
+    }
+  }
+}
