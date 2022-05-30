@@ -1,0 +1,138 @@
+.header {
+
+  height: 86px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .search {
+
+    display: flex;
+    align-items: center;
+    margin-left: 21px;
+
+    input {
+      width: 448px;
+      height: 39px;
+      border-radius: 10px;
+      border: 1px solid #D6D6D8;
+      outline: none;
+      padding-left: 20px;
+
+      &::placeholder {
+        color: #BFBDC1;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 21px;
+      }
+    }
+
+    & [alt="glass"] {
+      position: relative;
+      right: 35px;
+      transition: .5s;
+    }
+
+    &:hover [alt="glass"] {
+      transform: scale(1.2);
+    }
+
+  }
+
+  .userPanel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 28px;
+    width: 407px;
+    height: 49px;
+
+    .btnAdd {
+      padding: 0 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      width: 140px;
+      height: 40px;
+      border-radius: 8px;
+      border: none;
+      background: #7B2CBF;
+
+      cursor: pointer;
+
+      &:hover {
+        box-shadow: 0 0 5px #7B2CBF;
+      }
+
+      & span {
+        color: #fff;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 17px;
+        text-transform: uppercase;
+      }
+
+    }
+
+    .alert {
+      width: 47px;
+      height: 49px;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      & span {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: -5px;
+        left: 30px;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: #FF6D00;
+        color: #fff;
+        font-weight: 400;
+        font-size: 11px;
+        line-height: 13px;
+        animation: ringing 1500ms infinite;
+      }
+
+      .btnBell {
+        width: 39px;
+        height: 39px;
+        border-radius: 10px;
+        border: none;
+        background: #f8f4fc;
+        cursor: pointer;
+      }
+    }
+
+    .user {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 158px;
+      height: 40px;
+
+      .btnArrow {
+        background: #fff;
+        border: none;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+@keyframes ringing {
+  0% {
+    box-shadow: 0 0 0 #FF6D00;
+  }
+  75% {
+    box-shadow: 0 0 8px #FF6D00;
+  }
+  
+}
