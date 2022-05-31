@@ -1,6 +1,6 @@
 .App {
-    width: 1440px;
-    height: auto;
+    width: auto;
+    height: 945px;
     display: grid;
     grid-template-columns: 236px auto;
     grid-template-rows: 68px auto;

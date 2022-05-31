@@ -1,0 +1,24 @@
+.section {
+  min-height: 415px;
+  width: 1225px;
+  margin-top: 14px;
+  margin-left: 21px;
+  margin-bottom: 36px;
+
+  .nameSection {
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 27px;
+    color: #110F15;
+    text-transform: uppercase;
+    border-left: 4px solid #7B2CBF;
+    padding-left: 16px;
+  }
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 14px;
+    flex-wrap: wrap;
+  }
+}

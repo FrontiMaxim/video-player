@@ -1,5 +1,9 @@
 .header {
-
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  width: 3fr;
   height: 86px;
   display: flex;
   justify-content: space-between;
@@ -131,8 +135,11 @@
   0% {
     box-shadow: 0 0 0 #FF6D00;
   }
-  75% {
-    box-shadow: 0 0 8px #FF6D00;
+  50% {
+    box-shadow: 0 0 10px #FF6D00;
+  }
+  100% {
+    box-shadow: 0 0 0 #FF6D00;
   }
   
 }

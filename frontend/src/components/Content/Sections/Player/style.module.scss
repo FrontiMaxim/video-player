@@ -1,0 +1,63 @@
+.for_you {
+  width: 270px;
+  min-height: 304px;
+
+  video {
+    height: 188px;
+    width: 100%;
+  }
+}
+
+.related {
+
+}
+
+.trending {
+  width: 368px;
+  min-height: 367px;
+
+  video {
+    height: 256px;
+    width: 100%;
+  }
+}
+
+.player {
+  margin-top: 20px;
+  .nameVideo {
+    margin-top: 16px;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 27px;
+    color: #110F15;
+  }
+
+  .views_date {
+    display: flex;
+    align-items: center;
+    margin-top: 8px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    color: #88878A;
+
+    .views {
+      margin-right: 8px;
+    }
+
+    .date {
+      margin-left: 8px;
+    }
+  }
+
+  .author {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-top: 13px;
+
+    span {
+      margin-left: 8px;
+    }
+  }
+}
