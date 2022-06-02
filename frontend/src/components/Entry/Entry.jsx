@@ -9,8 +9,58 @@ function Entry(props) {
     const [btnText, setBtnText] = useState('Sign Up');
     const [typeForm, setTypeForm] = useState('registration');
     const [isRegistration, setIsRegistration] = useState(true);
-    
-    console.log("render");
+    const [isError, setIsError] = useState(false);
+
+    const [nickname, setNickname] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    async function request(url, body) {
+        try {
+            const response = await fetch(url, {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify(body)
+            })
+
+            const status = response.status;
+
+            if(status === 201) {
+                alert("Вы успешно зарегистрировались!");
+            } else if (status === 200) {
+                alert("Вы успешно авторизовались!");
+            } else if (status === 404) {
+                setIsError(true);
+            } else if (status === 403) {
+                alert("Такой пользователь уже существует!");
+            }
+
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
+    function clickSubmit(e) {
+        e.preventDefault();
+        if(email) {
+            if(password) {
+                if(isRegistration) {
+                    if(nickname) {
+                        request('/registration', {nickname, email, password});
+                    } else {
+                        alert("заполнить никнейм!");
+                    }
+                } else {
+                    request('/authentication', {email, password});
+                }
+            } else {
+                alert("заполнить пароль!");
+            }
+
+        } else {
+            alert("заполнить почут!");
+        }
+    }
 
     return (
         <div className={style.entry}>
@@ -21,7 +71,6 @@ function Entry(props) {
                 </div>
                 <div className={style.selection}>
                     <span className={style.registration} onClick={(e) => {
-                        e.preventDefault();
                         setIsRegistration(true);
                         setBtnText('Sign Up');
                         setTypeForm('registration');
@@ -30,7 +79,6 @@ function Entry(props) {
                     </span>
                     |
                     <span className={style.authentication} onClick={(e) => {
-                        e.preventDefault();
                         setIsRegistration(false);
                         setBtnText('Sign In');
                         setTypeForm('authentication');
@@ -46,20 +94,28 @@ function Entry(props) {
                     {
                         isRegistration &&
                         <div className={style.inputGroup}>
-                            <input type="text" id="nickname" placeholder="nickname"/>
+                            <input type="text" id="nickname" placeholder="nickname" onChange={(e) => {
+                            setNickname(e.target.value)}
+                            }/>
                         </div>
                     }
 
                     <div className={style.inputGroup}>
-                        <input type="email" id="email" placeholder="email"/>
+                        <input type="email" id="email" placeholder="email" onChange={(e) => {
+                            setEmail(e.target.value)}
+                        }/>
                     </div>
                     <div className={style.inputGroup}>
-                        <input type="password" id="password" placeholder="password"/>
+                        <input type="password" id="password" placeholder="password" onChange={(e) => {
+                            setPassword(e.target.value)}
+                        }/>
                     </div>
-                    <button className={style.btnSubmit}>{btnText}</button>
+                    <button className={style.btnSubmit} onClick={(e) => clickSubmit(e)}>{btnText}</button>
+                    {
+                        isError && !isRegistration && <span className={style.error}>this user does not exist...</span>
+                    }
                 </form>
             </div>
-
         </div>
     );
 }

@@ -123,7 +123,17 @@
           box-shadow: 0 0 5px #7B2CBF;
         }
       }
+
+      .error {
+        color: red;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 21px;
+      }
     }
   }
 
+  .empty {
+    background: rgba(255, 0, 0, 0.5);
+  }
 }

@@ -6,8 +6,6 @@ function Player({typePlayer, video}) {
 
     function setTypePlayer(typePlayer) {
 
-        let result = 'trending';
-
         if (typePlayer === 'for you') {
             return style.for_you;
         } else  if (typePlayer === 'related') {
