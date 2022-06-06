@@ -7,7 +7,7 @@ function Content(props) {
     return (
         <div className={style.content}>
             <Section typeSection={'for you'} url={'/content'} param={{}} />
-            {/*<Section typeSection={'for you'} arrVideo={} />*/}
+            <Section typeSection={'trending'} />
         </div>
     );
 }

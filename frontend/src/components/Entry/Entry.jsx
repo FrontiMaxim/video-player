@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import {useNavigate} from "react-router-dom";
 import style from "./style.module.scss"
 
 import icon from "../../assets/Sidebar/logo.svg";
@@ -15,6 +16,8 @@ function Entry(props) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+    let navigate = useNavigate();
+
     async function request(url, body) {
         try {
             const response = await fetch(url, {
@@ -24,11 +27,16 @@ function Entry(props) {
             })
 
             const status = response.status;
+            const data = await response.json();
 
             if(status === 201) {
-                alert("Вы успешно зарегистрировались!");
+                // регистрация
+               navigate('/home', {replace: true});
+               console.log(data);
             } else if (status === 200) {
-                alert("Вы успешно авторизовались!");
+                // аутентификация
+                navigate('/home', {replace: true});
+                console.log(data);
             } else if (status === 404) {
                 setIsError(true);
             } else if (status === 403) {
