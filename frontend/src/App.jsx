@@ -1,19 +1,21 @@
 import React from "react";
 import "./App.css";
-import Entry from "./components/Entry/Entry";
-import {Route, Routes} from "react-router-dom";
-import Home from "./components/Home/Home";
-
-
+import Authorization from "./hoc/Authorization";
+import { ContextAuthorization, ContextUser } from "./context";
+import {useState} from "react";
 
 function App() {
+    const [isAuth, setIsAuth] = useState(false);
+    const [user, setUser] = useState(null);
+
   return (
-      <div className="App">
-          <Routes>
-              <Route path={'/'} element={<Entry />} />
-              <Route path={'/home'} element={<Home/>} />
-          </Routes>
-      </div>
+      <ContextAuthorization.Provider value={{isAuth, setIsAuth}}>
+          <ContextUser.Provider value={{user, setUser}}>
+              <div className="App">
+                  <Authorization />
+              </div>
+          </ContextUser.Provider>
+      </ContextAuthorization.Provider>
   );
 }
 

@@ -1,6 +1,6 @@
-import React, {useState} from "react";
-import {useNavigate} from "react-router-dom";
+import React, {useState, useContext} from "react";
 import style from "./style.module.scss"
+import {ContextAuthorization, ContextUser} from "../../context";
 
 import icon from "../../assets/Sidebar/logo.svg";
 import viewer from "../../assets/Sidebar/viewer.svg";
@@ -16,7 +16,8 @@ function Entry(props) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    let navigate = useNavigate();
+    const { setIsAuth } = useContext(ContextAuthorization);
+    const {setUser} = useContext(ContextUser);
 
     async function request(url, body) {
         try {
@@ -27,16 +28,16 @@ function Entry(props) {
             })
 
             const status = response.status;
-            const data = await response.json();
+            const user = await response.json();
 
             if(status === 201) {
                 // регистрация
-               navigate('/home', {replace: true});
-               console.log(data);
+                setIsAuth(true);
+                setUser(user);
             } else if (status === 200) {
                 // аутентификация
-                navigate('/home', {replace: true});
-                console.log(data);
+                setIsAuth(true);
+                setUser(user);
             } else if (status === 404) {
                 setIsError(true);
             } else if (status === 403) {
@@ -79,25 +80,27 @@ function Entry(props) {
                 </div>
                 <div className={style.selection}>
                     <span className={style.registration} onClick={(e) => {
+                        e.preventDefault();
                         setIsRegistration(true);
                         setBtnText('Sign Up');
                         setTypeForm('registration');
                     }}>
-                      <a href="#">Sign Up</a>
+                      <a href="frontend/src/pages/Entry/Entry#">Sign Up</a>
                     </span>
                     |
                     <span className={style.authentication} onClick={(e) => {
+                        e.preventDefault();
                         setIsRegistration(false);
                         setBtnText('Sign In');
                         setTypeForm('authentication');
                     }}>
-                        <a href="#">Sign In</a>
+                        <a href="frontend/src/pages/Entry/Entry#">Sign In</a>
                     </span>
                 </div>
             </div>
 
             <div className={style.containerForm}>
-                <form action="">
+                <form action="frontend/src/pages/Entry/Entry">
                     <span className={style.headForm }>{typeForm}</span>
                     {
                         isRegistration &&

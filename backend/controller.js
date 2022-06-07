@@ -12,7 +12,17 @@ exports.registration = async function (request, response, userCollection) {
             status = 403;
         } else {
             // если такого ещё нет, то можно регистрировать его
-            user = await userCollection.insertOne(request.body);
+            const newUser = {
+                ...request.body,
+                alters: {
+                    count: 0,
+                    message: []
+                }
+            }
+
+            userCollection.insertOne(newUser);
+
+            user = await userCollection.findOne({nickname, email});
 
             if(user) {
                 status = 201;

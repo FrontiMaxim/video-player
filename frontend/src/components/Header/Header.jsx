@@ -11,13 +11,13 @@ import img from "../../assets/Header/user.png";
 
 const infoUser = {
     img,
-    name: "Tobi",
-    lastName: "Mojeed"
 };
 
-const countAlerts = 10;
 
-function Header(props) {
+function Header({user}) {
+
+    const {nickname, alters} = user;
+
     return (
       <div className={style.header}>
           <div className={style.search}>
@@ -31,7 +31,7 @@ function Header(props) {
               </button>
               <div className={style.alert}>
                   {
-                      countAlerts ? <span>{countAlerts}</span> : ""
+                      alters.count ? <span>{alters.count}</span> : ""
                   }
                   <button className={style.btnBell}>
                       <img src={bell} alt="bell"/>
@@ -39,7 +39,7 @@ function Header(props) {
               </div>
               <div className={style.user}>
                   <img src={infoUser.img} alt="user"/>
-                  <span>{`${infoUser.name} ${infoUser.lastName}`}</span>
+                  <span>{nickname}</span>
                   <button className={style.btnArrow}>
                       <img src={arrow} alt="arrow" />
                   </button>

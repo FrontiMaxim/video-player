@@ -48,7 +48,7 @@
     justify-content: space-between;
     align-items: center;
     margin-right: 28px;
-    width: 407px;
+    width: auto;
     height: 49px;
 
     .btnAdd {
@@ -64,6 +64,8 @@
       background: #7B2CBF;
 
       cursor: pointer;
+
+      margin-right: 10px;
 
       &:hover {
         box-shadow: 0 0 5px #7B2CBF;
@@ -86,6 +88,8 @@
       display: flex;
       justify-content: center;
       align-items: center;
+
+      margin-right: 10px;
 
       & span {
         display: flex;
@@ -119,10 +123,15 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      width: 158px;
+      width: auto;
       height: 40px;
 
+      img {
+        margin-right: 10px;
+      }
+
       .btnArrow {
+        margin-left: 10px;
         background: #fff;
         border: none;
         cursor: pointer;
