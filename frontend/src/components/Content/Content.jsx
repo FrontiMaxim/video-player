@@ -6,8 +6,8 @@ import Section from "./Sections/Section";
 function Content(props) {
     return (
         <div className={style.content}>
-            <Section typeSection={'for you'} url={'/content'} param={{}} />
             <Section typeSection={'trending'} />
+            <Section typeSection={'for you'} url={'/content'} param={{}} />
         </div>
     );
 }

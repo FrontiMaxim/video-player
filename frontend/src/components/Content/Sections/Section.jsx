@@ -24,7 +24,7 @@ function Section({typeSection, url, param}) {
                 }
               </div>;
 
-    const empty = <div className={style.empty}>Для данной категории материал не найден...</div>;
+    const empty = <div className={style.empty}>No material found for this category...</div>;
 
     return (
         <div className={style.section}>

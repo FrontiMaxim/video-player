@@ -6,7 +6,7 @@ function ItemMenu({item}) {
         <li className={style.itemMenu}>
             <a href={item.link}>
                 {item.img}
-                <span>{item.text}</span>
+                <span>{item.name}</span>
             </a>
         </li>
     );

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import style from "./style.module.scss";
 
 import glass from "../../assets/Header/glass.svg";
@@ -8,6 +8,7 @@ import arrow from "../../assets/Header/arrow.svg";
 
 // временно
 import img from "../../assets/Header/user.png";
+import SelectMenu from "../SelectMenu/SelectMenu.jsx";
 
 const infoUser = {
     img,
@@ -17,6 +18,11 @@ const infoUser = {
 function Header({user}) {
 
     const {nickname, alters} = user;
+    const [isOpen, setIsOpen] = useState(false);
+
+    const clickSelectMenu = () => {
+        setIsOpen(!isOpen);
+    }
 
     return (
       <div className={style.header}>
@@ -40,9 +46,12 @@ function Header({user}) {
               <div className={style.user}>
                   <img src={infoUser.img} alt="user"/>
                   <span>{nickname}</span>
-                  <button className={style.btnArrow}>
-                      <img src={arrow} alt="arrow" />
-                  </button>
+                  <div className={style.select}>
+                      <button className={style.btnArrow} onClick={clickSelectMenu}>
+                          <img src={arrow} alt="arrow" style={{transform: `${isOpen ? 'rotate(180deg)' : ''}`}} />
+                      </button>
+                      <SelectMenu isOpen={isOpen}/>
+                  </div>
               </div>
           </div>
       </div>

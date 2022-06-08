@@ -1,6 +1,6 @@
 import React, {useState, useContext} from "react";
 import style from "./style.module.scss"
-import {ContextAuthorization, ContextUser} from "../../context";
+import {ContextAuthorization, ContextUser, ContextFollowing} from "../../context";
 
 import icon from "../../assets/Sidebar/logo.svg";
 import viewer from "../../assets/Sidebar/viewer.svg";
@@ -17,7 +17,8 @@ function Entry(props) {
     const [password, setPassword] = useState('');
 
     const { setIsAuth } = useContext(ContextAuthorization);
-    const {setUser} = useContext(ContextUser);
+    const { setUser } = useContext(ContextUser);
+    const { setListFollowing } = useContext(ContextFollowing);
 
     async function request(url, body) {
         try {
@@ -34,10 +35,12 @@ function Entry(props) {
                 // регистрация
                 setIsAuth(true);
                 setUser(user);
+                setListFollowing(user.following);
             } else if (status === 200) {
                 // аутентификация
                 setIsAuth(true);
                 setUser(user);
+                setListFollowing(user.following);
             } else if (status === 404) {
                 setIsError(true);
             } else if (status === 403) {

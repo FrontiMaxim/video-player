@@ -8,9 +8,11 @@ function Menu({name, list}) {
             <span className={style.name}>{name}</span>
             <ul className={style.list}>
                 {
-                    list.map((node, idx) => {
-                      return <ItemMenu key={`item${name + idx}`} item={node}/>
-                    })
+                    list ? list.map((node, idx) => {
+                        if (idx !== 4) {
+                            return <ItemMenu key={`item${name + idx}`} item={node}/>
+                        }
+                    }) : <span className={style.noSubscription}>no subscriptions yet</span>
                 }
             </ul>
         </div>

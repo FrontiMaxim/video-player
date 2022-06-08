@@ -17,7 +17,8 @@ exports.registration = async function (request, response, userCollection) {
                 alters: {
                     count: 0,
                     message: []
-                }
+                },
+                following: []
             }
 
             userCollection.insertOne(newUser);
